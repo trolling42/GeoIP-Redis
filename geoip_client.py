@@ -18,6 +18,7 @@ def geoip_redis(r, ip, country_only = True):
 	try:
 		(res, score) = r.zrangebyscore("geoip", ipnum, 'inf', 0, 1, withscores=True)[0]
 
+
 		(id, junk, start_end) = res.split(":", 2)
 
 		if start_end == "s" :
@@ -39,5 +40,3 @@ def geoip_redis(r, ip, country_only = True):
 r = Redis("localhost")
 
 print geoip_redis(r, "194.145.63.0", False)
-
-		
